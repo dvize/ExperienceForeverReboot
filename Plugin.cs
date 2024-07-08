@@ -4,7 +4,7 @@ using BepInEx.Configuration;
 
 namespace ExperienceForeverReboot
 {
-    [BepInPlugin("com.dvize.ExperienceForeverReboot", "dvize.ExperienceForeverReboot", "1.0.0")]
+    [BepInPlugin("com.dvize.ExperienceForeverReboot", "dvize.ExperienceForeverReboot", "1.1.0")]
     public class Plugin : BaseUnityPlugin
     {
         public static ConfigEntry<bool> enabledPlugin;

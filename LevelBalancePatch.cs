@@ -1,6 +1,6 @@
 
 using System.Reflection;
-using Aki.Reflection.Patching;
+using SPT.Reflection.Patching;
 using EFT;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace ExperienceForeverReboot
     {
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(SkillClass).GetMethod(nameof(SkillClass.method_2));
+            return typeof(SkillClass).GetMethod(nameof(SkillClass.UseEffectiveness));
         }
 
         [PatchPrefix]

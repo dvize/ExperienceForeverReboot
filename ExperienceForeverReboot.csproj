@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net471</TargetFramework>
     <AssemblyName>dvize.ExperienceForeverReboot</AssemblyName>
     <Description></Description>
-    <Version></Version>
+    <Version>1.1.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.0.0</FileVersion>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>$(FileVersion)</FileVersion>
+    <AssemblyVersion>$(AssemblyVersion)</AssemblyVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
@@ -24,18 +24,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Aki.Reflection">
-      <HintPath>F:\SPT-AKI-DEV\EscapeFromTarkov_Data\Managed\Aki.Reflection.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>F:\SPT-AKI-DEV\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Comfort">
       <HintPath>F:\SPT-AKI-DEV\EscapeFromTarkov_Data\Managed\Comfort.dll</HintPath>
     </Reference>
+    <Reference Include="spt-reflection">
+      <HintPath>F:\SPT-AKI-DEV\BepInEx\plugins\spt\spt-reflection.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).dll&quot;&#xD;&#xA;&#xD;&#xA;if $(ConfigurationName) == Debug (&#xD;&#xA;    copy &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).pdb&quot;&#xD;&#xA;) else (&#xD;&#xA;    del &quot;F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).pdb&quot;&#xD;&#xA;)" />
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).dll&quot;&#xD;&#xA;&#xD;&#xA;if &quot;$(ConfigurationName)&quot; == &quot;Debug&quot; (&#xD;&#xA;    copy &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).pdb&quot;&#xD;&#xA;) else (&#xD;&#xA;    del &quot;F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).pdb&quot;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;if &quot;$(ConfigurationName)&quot; == &quot;Release&quot; (&#xD;&#xA;    powershell -ExecutionPolicy Bypass -NoProfile -NonInteractive -File &quot;$(ProjectDir)PackageMods.ps1&quot; -ConfigurationName &quot;$(ConfigurationName)&quot; -TargetPath &quot;F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).dll&quot; -TargetName &quot;$(TargetName)&quot; -TargetDir &quot;F:\SPT-AKI-DEV\BepInEx\plugins&quot;&#xD;&#xA;)" />
   </Target>
 </Project>
